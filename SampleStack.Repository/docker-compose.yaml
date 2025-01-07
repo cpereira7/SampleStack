@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: repository_db
+    restart: always
+    env_file: env_file.env
+    ports:
+      - "${HOST_PORT}:${POSTGRES_PORT}"
+  
+  repository_app:
+    build: 
+      context: ./
+      dockerfile: ./Dockerfile
+    container_name: repository_app
+    env_file: env_file.env
+    environment:
+      - CONNECTION_STRING=Server=${POSTGRES_HOST};Port=${POSTGRES_PORT};Database=${POSTGRES_DB};User Id=${POSTGRES_USER};Password=${POSTGRES_PASSWORD};
+    depends_on:
+      - postgres
