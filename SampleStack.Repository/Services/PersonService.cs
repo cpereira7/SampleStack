@@ -37,5 +37,21 @@ namespace SampleStack.Repository.Services
         {
             return _personsRepository.GetAll();
         }
+
+        public void UpdatePerson(int id, string name, string lastName)
+        {
+            var person = _personsRepository.GetById(id);
+
+            var updatedPerson = person with { FirstName = name, LastName = lastName };
+
+            _personsRepository.Update(updatedPerson);
+        }
+
+        public void RemovePerson(int id)
+        {
+            var person = _personsRepository.GetById(id);
+
+            _personsRepository.Delete(person);
+        }
     }
 }
