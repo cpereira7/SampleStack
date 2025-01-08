@@ -50,7 +50,17 @@ namespace SampleStack.Repository.Repositories
 
         public void Update(T entity)
         {
-            _dbContext.Entry(entity).State = EntityState.Modified;
+            var trackedEntity = _dbContext.Set<T>().Local.SingleOrDefault(e => e.Id == entity.Id);
+            if (trackedEntity != null)
+            {
+                _dbContext.Entry(trackedEntity).CurrentValues.SetValues(entity);
+            }
+            else
+            {
+                _dbContext.Attach(entity);
+                _dbContext.Entry(entity).State = EntityState.Modified;
+            }
+
             _dbContext.SaveChanges();
         }
     }
