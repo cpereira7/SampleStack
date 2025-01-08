@@ -1,7 +1,10 @@
 {
   "profiles": {
     "SampleStack.Repository": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
     },
     "WSL": {
       "commandName": "WSL2",
