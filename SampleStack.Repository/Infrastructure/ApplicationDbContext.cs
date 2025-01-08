@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using SampleStack.Repository.Models;
 
-namespace SampleStack.Repository
+namespace SampleStack.Repository.Infrastructure
 {
     internal class ApplicationDbContext : DbContext
     {

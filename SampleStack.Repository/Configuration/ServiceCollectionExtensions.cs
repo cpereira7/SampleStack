@@ -2,15 +2,11 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SampleStack.Repository.Infrastructure;
 using SampleStack.Repository.Repositories;
 using SampleStack.Repository.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SampleStack.Repository
+namespace SampleStack.Repository.Configuration
 {
     internal static class ServiceCollectionExtensions
     {

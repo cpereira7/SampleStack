@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace SampleStack.Repository
+namespace SampleStack.Repository.Infrastructure
 {
     internal static class DatabaseInitializer
     {
