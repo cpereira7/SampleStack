@@ -1,18 +1,10 @@
 ﻿using AutoMapper;
 using SampleStack.AutoMapper.Data;
-using SampleStack.AutoMapper.DTOs;
 using SampleStack.AutoMapper.Models;
 
-namespace SampleStack.AutoMapper
+namespace SampleStack.AutoMapper.Services
 {
-    internal interface IService<out T> where T : class
-    {
-        Task RetrieveData();
-        IReadOnlyList<T> GetAllItems();
-        T? GetItem(int id);
-    }
-
-    internal abstract class BaseService<TDomain, TDto> : IService<TDomain> 
+    internal abstract class BaseService<TDomain, TDto> : IService<TDomain>
         where TDomain : BaseModel
         where TDto : class
     {
@@ -43,27 +35,6 @@ namespace SampleStack.AutoMapper
         protected virtual TDomain ConvertToDomain(TDto dto)
         {
             return _mapper.Map<TDomain>(dto);
-        }
-    }
-
-    internal class OrderService : BaseService<Order, OrderDto>
-    {
-        public OrderService(IDataSource<OrderDto> dataSource, IMapper mapper) : base(dataSource, mapper)
-        {
-        }
-    }
-
-    internal class ProductService : BaseService<Product, ProductDto>
-    {
-        public ProductService(IDataSource<ProductDto> dataSource, IMapper mapper) : base(dataSource, mapper)
-        {
-        }
-    }
-
-    internal class CustomerService : BaseService<Customer, CustomerDto>
-    {
-        public CustomerService(IDataSource<CustomerDto> dataSource, IMapper mapper) : base(dataSource, mapper)
-        {
         }
     }
 }

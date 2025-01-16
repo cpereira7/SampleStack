@@ -1,11 +1,10 @@
-﻿// See https://aka.ms/new-console-template for more information
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using SampleStack.AutoMapper;
+﻿using Microsoft.Extensions.DependencyInjection;
 using SampleStack.AutoMapper.Data;
 using SampleStack.AutoMapper.DTOs;
+using SampleStack.AutoMapper.Profiles;
+using SampleStack.AutoMapper.Services;
 
-Console.WriteLine("Hello, World!");
+Console.WriteLine("Orders List!");
 
 // Setup dependency injection
 var services = new ServiceCollection();
