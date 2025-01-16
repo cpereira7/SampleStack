@@ -1,11 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SampleStack.AutoMapper.Data;
 using SampleStack.AutoMapper.DTOs;
-using SampleStack.AutoMapper.Models;
 using SampleStack.AutoMapper.Profiles;
 using SampleStack.AutoMapper.Services;
-
-Console.WriteLine("Orders List!");
 
 // Setup dependency injection
 var services = new ServiceCollection();
@@ -22,19 +19,18 @@ services.AddScoped<IDataSource<ProductDto>, ProductDataSource>();
 services.AddSingleton<OrderService>();
 services.AddSingleton<ProductService>();
 services.AddSingleton<CustomerService>();
+services.AddSingleton<DataRetrievalFacade>();
 
 var serviceProvider = services.BuildServiceProvider();
 
-// Fetch and display orders
-var orderService = serviceProvider.GetRequiredService<OrderService>();
-var productService = serviceProvider.GetRequiredService<ProductService>();
-var customerService = serviceProvider.GetRequiredService<CustomerService>();
+// Fetch and display orders using the Facade
+var dataRetrievalFacade = serviceProvider.GetRequiredService<DataRetrievalFacade>();
 
-await productService.RetrieveData();
-await customerService.RetrieveData();
-await orderService.RetrieveData();
+await dataRetrievalFacade.RetrieveAllDataAsync();
 
-var orders = orderService.GetAllItems();
+var orders = dataRetrievalFacade.GetAllOrders();
+
+Console.WriteLine("Orders List!");
 
 foreach (var order in orders)
 {
