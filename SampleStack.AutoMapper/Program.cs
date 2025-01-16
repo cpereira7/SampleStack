@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SampleStack.AutoMapper.Data;
 using SampleStack.AutoMapper.DTOs;
+using SampleStack.AutoMapper.Models;
 using SampleStack.AutoMapper.Profiles;
 using SampleStack.AutoMapper.Services;
 
@@ -44,4 +45,3 @@ foreach (var order in orders)
         Console.WriteLine($"  Product: {item.Product?.Name}, Quantity: {item.Quantity}");
     }
 }
-
