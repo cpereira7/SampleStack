@@ -1,29 +1,31 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using SampleStack.AutoMapper.Data;
 using SampleStack.AutoMapper.DTOs;
 using SampleStack.AutoMapper.Profiles;
 using SampleStack.AutoMapper.Services;
 
-// Setup dependency injection
-var services = new ServiceCollection();
+var host = Host.CreateDefaultBuilder(args)
+    .ConfigureServices((context, services) =>
+    {
+        // Add AutoMapper
+        services.AddAutoMapper(typeof(MappingProfile));
 
-// Add AutoMapper
-services.AddAutoMapper(typeof(MappingProfile));
+        // Add DataSources
+        services.AddScoped<IDataSource<CustomerDto>, CustomerDataSource>();
+        services.AddScoped<IDataSource<OrderDto>, OrderDataSource>();
+        services.AddScoped<IDataSource<ProductDto>, ProductDataSource>();
 
-// Add DataSources
-services.AddScoped<IDataSource<CustomerDto>, CustomerDataSource>();
-services.AddScoped<IDataSource<OrderDto>, OrderDataSource>();
-services.AddScoped<IDataSource<ProductDto>, ProductDataSource>();
+        // Add Services
+        services.AddSingleton<OrderService>();
+        services.AddSingleton<ProductService>();
+        services.AddSingleton<CustomerService>();
+        services.AddSingleton<DataRetrievalFacade>();
+    })
+    .Build();
 
-// Add Services
-services.AddSingleton<OrderService>();
-services.AddSingleton<ProductService>();
-services.AddSingleton<CustomerService>();
-services.AddSingleton<DataRetrievalFacade>();
+var serviceProvider = host.Services;
 
-var serviceProvider = services.BuildServiceProvider();
-
-// Fetch and display orders using the Facade
 var dataRetrievalFacade = serviceProvider.GetRequiredService<DataRetrievalFacade>();
 
 await dataRetrievalFacade.RetrieveAllDataAsync();
