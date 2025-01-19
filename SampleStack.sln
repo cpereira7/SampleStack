@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleStack.Repository.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleStack.AutoMapper", "SampleStack.AutoMapper\SampleStack.AutoMapper.csproj", "{CD7A32F4-AB11-4EDE-8B33-2622B4FDFFC8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleStack.AutoMapper.Tests", "SampleStack.AutoMapper.Tests\SampleStack.AutoMapper.Tests.csproj", "{2610724E-ED4D-4DB3-88EC-3B8807775EA9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{CD7A32F4-AB11-4EDE-8B33-2622B4FDFFC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD7A32F4-AB11-4EDE-8B33-2622B4FDFFC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD7A32F4-AB11-4EDE-8B33-2622B4FDFFC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2610724E-ED4D-4DB3-88EC-3B8807775EA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2610724E-ED4D-4DB3-88EC-3B8807775EA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2610724E-ED4D-4DB3-88EC-3B8807775EA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2610724E-ED4D-4DB3-88EC-3B8807775EA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
