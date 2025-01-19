@@ -44,4 +44,5 @@ foreach (var order in orders)
     {
         Console.WriteLine($"  Product: {item.Product?.Name}, Quantity: {item.Quantity}");
     }
+    Console.WriteLine($"Total: { order.TotalAmount:N2}");
 }
