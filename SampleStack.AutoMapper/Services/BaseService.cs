@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SampleStack.AutoMapper.Data;
+using SampleStack.AutoMapper.Mapping;
 using SampleStack.AutoMapper.Models;
 
 namespace SampleStack.AutoMapper.Services
@@ -9,10 +10,10 @@ namespace SampleStack.AutoMapper.Services
         where TDto : class
     {
         private readonly IDataSource<TDto> _dataSource;
-        private readonly IMapper _mapper;
+        private readonly IMapService _mapper;
         private readonly List<TDomain> _data;
 
-        protected BaseService(IDataSource<TDto> dataSource, IMapper mapper)
+        protected BaseService(IDataSource<TDto> dataSource, IMapService mapper)
         {
             _dataSource = dataSource;
             _mapper = mapper;
@@ -34,7 +35,7 @@ namespace SampleStack.AutoMapper.Services
 
         protected virtual TDomain ConvertToDomain(TDto dto)
         {
-            return _mapper.Map<TDomain>(dto);
+            return _mapper.Map<TDto, TDomain>(dto);
         }
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Hosting;
 using SampleStack.AutoMapper.Data;
 using SampleStack.AutoMapper.DTOs;
+using SampleStack.AutoMapper.Mapping;
 using SampleStack.AutoMapper.Profiles;
 using SampleStack.AutoMapper.Services;
 
@@ -10,6 +11,7 @@ var host = Host.CreateDefaultBuilder(args)
     {
         // Add AutoMapper
         services.AddAutoMapper(typeof(MappingProfile));
+        services.AddScoped<IMapService, MapService>();
 
         // Add DataSources
         services.AddScoped<IDataSource<CustomerDto>, CustomerDataSource>();
