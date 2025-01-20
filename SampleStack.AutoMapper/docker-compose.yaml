@@ -1,0 +1,6 @@
+services:
+  automapper_app:
+    build: 
+      context: ./
+      dockerfile: ./Dockerfile
+    container_name: automapper_app
