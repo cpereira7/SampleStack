@@ -20,7 +20,7 @@ namespace SampleStack.AutoMapper.Profiles
         {
             var id = GetIdFromSource(source);
 
-            return _service.GetItem(id) ?? throw new NullReferenceException($"Unable to resolve {typeof(TMember).Name} with the provided ID.");
+            return _service.GetItem(id) ?? throw new NullReferenceException($"Unable to resolve {typeof(TMember).Name} with the provided ID ({id}).");
         }
 
         protected abstract int GetIdFromSource(TSource source);
