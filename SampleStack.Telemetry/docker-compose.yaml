@@ -8,8 +8,6 @@ services:
     ports:
       - "${API_HTTP_PORT}:${API_HTTP_PORT}"
     depends_on:
-      - otel_collector
-      - data_prepper
       - opensearch
 
   telemetry_app:
@@ -33,6 +31,8 @@ services:
       - "55680:55680" #oltp
     volumes:
       - ./collector/config.yaml:/etc/otel-collector-config.yaml
+    command: 
+      - ["--config=/etc/otel-collector-config.yaml"]
     depends_on:
       - data_prepper
 
@@ -49,6 +49,8 @@ services:
       - "21892:21892"
     volumes:
       - ./data-prepper/pipelines.yaml:/usr/share/data-prepper/pipelines/pipelines.yaml
+    depends_on:
+      - opensearch
   
   opensearch:
     image: opensearchproject/opensearch:2.11.1
